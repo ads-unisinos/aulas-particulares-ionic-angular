@@ -1,0 +1,7 @@
+{
+  "name": "aulas-particulares",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
