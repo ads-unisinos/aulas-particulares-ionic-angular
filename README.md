@@ -7,6 +7,8 @@ colocar uma breve descrição do app
 
 ## Estrutura do Projeto
 
+Utils (`src\helper\Utils.ts`): O código do método `getUniqueId` foi extraido [aqui](https://www.newline.co/books/beginners-guide-to-typescript/generating-unique-ids).
+
 ## Como Executar
 
 0) Instalar o Ionic se necessário `npm install -g @ionic/cli`.

@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastrar</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>Sair</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header><h3>Dados da Aula</h3></ion-list-header>
+    <ion-item>
+      <ion-datetime [(ngModel)]="dia" displayFormat="DD-MMM-YYYY"
+      doneText="OK" cancelText="Cancelar" placeholder="Informe o dia"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-datetime placeholder="inicio" display-format="hh:mm A" picker-format="hh:mm A" doneText="OK" cancelText="Cancelar"
+      [(ngModel)]="inicio">
+      </ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-datetime placeholder="fim" display-format="hh:mm A" picker-format="hh:mm A" doneText="OK" cancelText="Cancelar"
+      [(ngModel)]="fim">
+      </ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-textarea inputmode="text" placeholder="Informe o conteúdo programado aqui ..." rows="3" cols="10"
+      [(ngModel)]="conteudo">
+    </ion-textarea>
+    </ion-item>
+    
+    <div class="btn-center">
+      <ion-button expand="block" (click)="salvar()">Salvar</ion-button>
+    </div>
+
+    <ion-item>
+      <ion-label color="danger">{{ mensagem }}</ion-label>
+    </ion-item>
+    
+  </ion-list>
+
+</ion-content>
