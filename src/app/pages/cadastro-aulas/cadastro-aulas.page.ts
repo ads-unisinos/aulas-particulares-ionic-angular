@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AulaPartService } from 'src/app/service/aula-part.service';
-import { Utils } from 'src/helper/Utils';
-
 
 @Component({
   selector: 'app-cadastro-aulas',
@@ -15,7 +14,9 @@ export class CadastroAulasPage implements OnInit {
   conteudo: string;
   mensagem: string;
 
-  constructor(private aulaService: AulaPartService) { }
+  constructor(
+    private aulaService: AulaPartService,
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -23,6 +24,10 @@ export class CadastroAulasPage implements OnInit {
   salvar(){
     this.aulaService.salvar(this.dia, this.inicio, this.fim, this.conteudo);
     this.mensagem = 'salvo com sucesso!!!';
+  }
+
+  logout(){
+    this.router.navigate(['/home']);
   }
 
 }

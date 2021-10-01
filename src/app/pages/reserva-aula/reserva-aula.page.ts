@@ -22,4 +22,8 @@ export class ReservaAulaPage implements OnInit {
     this.status = 0;
   }
 
+  logout(){
+    this.router.navigate(['/home']);
+  }
+
 }

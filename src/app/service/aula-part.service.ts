@@ -16,12 +16,21 @@ export class AulaPartService {
 
   constructor() {
     this.usuarios = [
-      {id: 1,nome: 'fulano de tal', perfil: Perfil.professor , login: 'fulanodetal@teste.com', senha: '123' },
-      {id: 2,nome: 'beltrano', perfil: Perfil.aluno , login: 'beltrano@teste.com', senha: '123' }
+      {id: 1,nome: 'fulano de tal', perfil: Perfil.professor , email: 'fulanodetal@teste.com', senha: '123' },
+      {id: 2,nome: 'beltrano', perfil: Perfil.aluno , email: 'beltrano@teste.com', senha: '123' }
     ];
 
     this.logado = null;
     this.aulas = [];
+  }
+
+  login(email: string, senha: string): void{
+    const usuario = this.usuarios.find( u => u.email === email && u.senha === senha);
+    if (usuario){
+      this.logado = usuario;
+      return;
+    }
+    throw new Error('Usuario ou senha invalida!!');
   }
 
   salvar(dia: Date, inicio: string, fim: string, conteudo: string): void
