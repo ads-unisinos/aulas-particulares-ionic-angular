@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'cadastro-aulas',
     loadChildren: () => import('./pages/cadastro-aulas/cadastro-aulas.module').then( m => m.CadastroAulasPageModule)
   },
+  {
+    path: 'reserva-aula',
+    loadChildren: () => import('./pages/reserva-aula/reserva-aula.module').then( m => m.ReservaAulaPageModule)
+  },
 ];
 
 @NgModule({
