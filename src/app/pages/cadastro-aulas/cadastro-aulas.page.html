@@ -11,6 +11,9 @@
   <ion-list>
     <ion-list-header><h3>Dados da Aula</h3></ion-list-header>
     <ion-item>
+      <ion-input type="text" placeholder="Titulo" [(ngModel)]="titulo"></ion-input>
+    </ion-item>
+    <ion-item>
       <ion-datetime [(ngModel)]="dia" displayFormat="DD-MMM-YYYY"
       doneText="OK" cancelText="Cancelar" placeholder="Informe o dia"></ion-datetime>
     </ion-item>
@@ -30,6 +33,22 @@
     </ion-textarea>
     </ion-item>
     
+  </ion-list> 
+
+  <ion-list>
+    <ion-list-header>Participantes</ion-list-header>
+    <ion-item>
+      <ion-label *ngIf="participantes.length === 0">Nenhum participante</ion-label>
+    </ion-item>
+
+    <ion-item *ngFor="let participante of participantes">
+      <ion-label>{{ participante.nome }}</ion-label>
+      <ion-button *ngIf="participante.status === 1" (click)="recusar()" color="danger">Recusar</ion-button>
+      <ion-button *ngIf="participante.status === 0" (click)="aceitar()" color="secondary">Aceitar</ion-button>
+    </ion-item>
+ 
+  </ion-list>
+  
     <div class="btn-center">
       <ion-button expand="block" (click)="salvar()">Salvar</ion-button>
     </div>
@@ -37,7 +56,5 @@
     <ion-item>
       <ion-label color="danger">{{ mensagem }}</ion-label>
     </ion-item>
-    
-  </ion-list>
 
 </ion-content>

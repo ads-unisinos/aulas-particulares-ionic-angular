@@ -10,18 +10,37 @@ import { Utils } from 'src/helper/Utils';
 })
 export class AulaPartService {
   usuarios: Usuario[];
-  aulas: Aula[];
+  aula: Aula;
   logado: Usuario;
   status: number;
 
   constructor() {
     this.usuarios = [
-      {id: 1,nome: 'fulano de tal', perfil: Perfil.professor , email: 'fulanodetal@teste.com', senha: '123' },
-      {id: 2,nome: 'beltrano', perfil: Perfil.aluno , email: 'beltrano@teste.com', senha: '123' }
+      {id: 1,nome: 'fulano de tal', perfil: Perfil.professor , email: 'fulanodetal@teste.com', senha: '123', status: 0 },
+      {id: 2,nome: 'beltrano', perfil: Perfil.aluno , email: 'beltrano@teste.com', senha: '123', status: 0 }
     ];
 
     this.logado = null;
-    this.aulas = [];
+    this.aula = null;
+  }
+
+  reservar() {
+    for (const item of this.aula.participantes) {
+      if(item.id === this.logado.id){
+        this.status = 1;
+        item.status = 1;
+        console.log(item);
+        return;
+      }
+    }
+
+    const copiaUsuario = this.logado;
+    copiaUsuario.status = 1;
+    this.aula.participantes.push(copiaUsuario);
+  }
+
+  desmarcar() {
+    throw new Error('Method not implemented.');
   }
 
   login(email: string, senha: string): void{
@@ -33,19 +52,24 @@ export class AulaPartService {
     throw new Error('Usuario ou senha invalida!!');
   }
 
-  salvar(dia: Date, inicio: string, fim: string, conteudo: string): void
+  salvar(titulo: string, dia: Date, inicio: Date, fim: Date, conteudo: string, participantes: Usuario[]): void
   {
     const id = new Utils().genUniqueId();
 
-    this.aulas.push({
+    this.aula = {
       id: id,
+      titulo: titulo,
       dia: dia,
+      inicio: inicio,
+      fim: fim,
       horario: `${inicio}-${fim}`,
       conteudo: conteudo,
       vinculado: null,
-      status: 0
-    });
-  }
+      status: 0,
+      participantes: new Array(...participantes)
+    };
 
+    console.log(this.aula);
+  }
 
 }

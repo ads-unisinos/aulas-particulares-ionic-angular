@@ -18,8 +18,16 @@ export class ReservaAulaPage implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.aula = this.aulaService.aulas[0];
+    this.aula = this.aulaService.aula;
     this.status = 0;
+  }
+
+  reservar(){
+    this.aulaService.reservar();
+  }
+
+  desmarcar(){
+    this.aulaService.desmarcar();
   }
 
   logout(){

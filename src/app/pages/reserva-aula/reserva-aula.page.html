@@ -15,13 +15,13 @@
   <ion-list>
     <ion-card *ngIf="aula">
       <ion-card-header>
-        <ion-card-title>Aula 1</ion-card-title>
+        <ion-card-title>{{ aula.titulo }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>{{ aula.conteudo }}</ion-card-content>
 
       <ion-item>
         <ion-label>Dia da Aula</ion-label>
-        <ion-label>{{ aula.dia }}</ion-label>
+        <ion-label>{{ aula.dia | date:"dd/MMM/yyyy" }}</ion-label>
       </ion-item>
       <ion-item>
         <ion-label>Horário</ion-label>
@@ -29,8 +29,8 @@
       </ion-item>
 
       <ion-item lines="none">
-        <ion-button *ngIf="status === 0" color="secondary" expand="full">Reservar</ion-button>
-        <ion-button *ngIf="status === 1" fill="outline" slot="end" color="danger">Não Reservar</ion-button>
+        <ion-button *ngIf="status === 0" (click)="reservar()" color="secondary" expand="full">Reservar</ion-button>
+        <ion-button *ngIf="status === 1" (click)="desmarcar()" fill="outline" slot="end" color="danger">Desmarcar</ion-button>
       </ion-item>     
     </ion-card>
 
